@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Nexspire CRM</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+>
+
+<link
+    rel="stylesheet"
+    href="css/dashboard.css"
+>
+
+
+</head>
+
+<body>
+
+<div class="app">
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="logo">
+        Nexspire CRM
+    </div>
+
+
+    <nav>
+
+        <button
+            onclick="showSection('dashboard')"
+        >
+            📊 Dashboard
+        </button>
+
+
+        <button
+            onclick="showSection('leads')"
+        >
+            👤 Leads
+        </button>
+
+
+        <button
+            onclick="showSection('customers')"
+        >
+            👥 Customers
+        </button>
+
+
+        <button
+            onclick="showSection('opportunities')"
+        >
+            💼 Opportunities
+        </button>
+
+
+        <button
+            onclick="showSection('activities')"
+        >
+            📅 Activities
+        </button>
+
+
+        <button
+            onclick="showSection('followups')"
+        >
+            🔔 Follow-Ups
+        </button>
+
+
+        <button
+            onclick="showSection('tickets')"
+        >
+            🎫 Tickets
+        </button>
+
+
+        <button
+            onclick="showSection('notifications')"
+        >
+            🔔 Notifications
+        </button>
+
+
+        <button
+            onclick="showSection('reports')"
+        >
+            📈 Reports
+        </button>
+
+
+        <button
+            onclick="showSection('search')"
+        >
+            🔎 Search
+        </button>
+
+        <a class="company-nav-link" href="/">
+            🏢 Company
+        </a>
+
+        <button id="adminNav" class="admin-only" onclick="showSection('admin')">
+            ⚙️ Admin Center
+        </button>
+
+    </nav>
+
+
+    <button
+        class="logout-btn"
+        onclick="logout()"
+    >
+        Logout
+    </button>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main class="main">
+
+
+    <header class="topbar">
+
+        <button type="button" id="menuButton" class="menu-button" aria-label="Open navigation">☰</button>
+        <h2>Nexspire CRM</h2>
+
+        <div id="userInfo">
+            Loading...
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         DASHBOARD
+    ================================================== -->
+
+    <section
+        id="dashboard"
+        class="section active"
+    >
+
+        <h1 id="dashboardTitle">Dashboard</h1>
+        <p id="dashboardSubtitle">Your CRM workspace at a glance.</p>
+
+
+        <div class="cards">
+
+
+            <div class="card leads-card">
+
+                <h3 id="leadsCardLabel">Total Leads</h3>
+
+                <p id="totalLeads">
+                    0
+                </p>
+
+            </div>
+
+            <div class="card role-card-admin">
+                <h3>Active Users</h3>
+                <p id="totalUsers">0</p>
+            </div>
+
+
+            <div class="card customers-card">
+
+                <h3 id="customersCardLabel">Customers</h3>
+
+                <p id="totalCustomers">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card opportunities-card">
+
+                <h3 id="opportunitiesCardLabel">Opportunities</h3>
+
+                <p id="totalOpportunities">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card activities-card">
+
+                <h3 id="activitiesCardLabel">Activities</h3>
+
+                <p id="totalActivities">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card tickets-card">
+
+                <h3 id="ticketsCardLabel">Tickets</h3>
+
+                <p id="totalTickets">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card revenue-card">
+
+                <h3 id="revenueCardLabel">Won Revenue</h3>
+
+                <p id="wonRevenue">
+                    ₹0
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <article class="company-profile-panel">
+            <div class="company-monogram">N</div>
+            <div class="company-profile-copy">
+                <p class="company-profile-kicker">YOUR COMPANY</p>
+                <h2>Nexspire Technologies</h2>
+                <p>Practical software, websites and digital growth systems for ambitious teams.</p>
+            </div>
+            <div class="company-profile-meta">
+                <span>Kolhapur, Maharashtra, India</span>
+                <a href="mailto:support@nexspiretechnologies.in">support@nexspiretechnologies.in</a>
+            </div>
+            <a class="company-profile-link" href="/" target="_blank" rel="noopener">Company details <span>↗</span></a>
+        </article>
+
+        <div class="dashboard-grid">
+
+
+            <div class="panel">
+
+                <h2>Recent Leads</h2>
+
+                <div id="recentLeads">
+                    Loading...
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>Upcoming Follow-Ups</h2>
+
+                <div id="upcomingFollowups">
+                    Loading...
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         LEADS
+    ================================================== -->
+
+    <section
+        id="leads"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h1>Leads</h1>
+
+            <button
+                type="button"
+                onclick="loadLeads()"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <!-- ADD LEAD FORM -->
+
+        <form
+            id="leadForm"
+            class="crud-form"
+        >
+
+            <input
+                id="leadName"
+                type="text"
+                placeholder="Lead name"
+                required
+            >
+
+            <input
+                id="leadEmail"
+                type="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                id="leadPhone"
+                type="tel"
+                placeholder="Phone"
+                required
+            >
+
+            <input
+                id="leadCompany"
+                type="text"
+                placeholder="Company"
+                required
+            >
+
+            <input
+                id="leadSource"
+                type="text"
+                placeholder="Source"
+                required
+            >
+
+            <button type="submit">
+                ➕ Add Lead
+            </button>
+
+        </form>
+
+        <!-- LEADS TABLE -->
+
+        <div
+            id="leadsContent"
+            class="table-container leads-table-container"
+        >
+            Loading...
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CUSTOMERS
+    ================================================== -->
+
+    <section
+        id="customers"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h1>Customers</h1>
+
+            <button
+                onclick="loadCustomers()"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <form
+            id="customerForm"
+            class="crud-form"
+        >
+
+            <input
+                id="customerName"
+                type="text"
+                placeholder="Customer name"
+                required
+            >
+
+            <input
+                id="customerEmail"
+                type="email"
+                placeholder="Email"
+                required
+            >
+
+            <input
+                id="customerPhone"
+                type="tel"
+                placeholder="Phone"
+                required
+            >
+
+            <input
+                id="customerCompany"
+                type="text"
+                placeholder="Company"
+                required
+            >
+
+            <button type="submit">
+                ➕ Add Customer
+            </button>
+
+        </form>
+        <div
+            id="customersContent"
+            class="table-container"
+        >
+            Loading...
+        </div>
+
+    </section>
+
+
+
+
+   <!-- =========================================================
+     OPPORTUNITIES SECTION
+========================================================= -->
+
+<section id="opportunities" class="section">
+
+    <!-- HEADER -->
+    <div class="section-header">
+
+        <div>
+            <h2>Opportunities</h2>
+            <p>Manage sales opportunities and track their progress.</p>
+        </div>
+
+        <div class="section-actions">
+
+            <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="loadOpportunities()"
+            >
+                🔄 Refresh
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                onclick="openOpportunityModal()"
+            >
+                ➕ Add Opportunity
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STAGE FILTERS
+    ====================================================== -->
+
+    <div class="opportunity-filters">
+
+        <button
+            type="button"
+            class="stage-filter active"
+            data-stage="all"
+            onclick="filterOpportunities('all')"
+        >
+            All
+        </button>
+
+        <button
+            type="button"
+            class="stage-filter"
+            data-stage="Prospecting"
+            onclick="filterOpportunities('Prospecting')"
+        >
+            Prospecting
+        </button>
+
+        <button
+            type="button"
+            class="stage-filter"
+            data-stage="Qualification"
+            onclick="filterOpportunities('Qualification')"
+        >
+            Qualification
+        </button>
+
+        <button
+            type="button"
+            class="stage-filter"
+            data-stage="Proposal"
+            onclick="filterOpportunities('Proposal')"
+        >
+            Proposal
+        </button>
+
+        <button
+            type="button"
+            class="stage-filter"
+            data-stage="Negotiation"
+            onclick="filterOpportunities('Negotiation')"
+        >
+            Negotiation
+        </button>
+
+        <button
+            type="button"
+            class="stage-filter"
+            data-stage="Closed Won"
+            onclick="filterOpportunities('Closed Won')"
+        >
+            Closed Won
+        </button>
+
+        <button
+            type="button"
+            class="stage-filter"
+            data-stage="Closed Lost"
+            onclick="filterOpportunities('Closed Lost')"
+        >
+            Closed Lost
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         OPPORTUNITIES TABLE
+    ====================================================== -->
+
+    <div class="table-container opportunities-table-container">
+
+    <table class="data-table opportunities-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+
+                    <th>Name</th>
+
+                    <th>Customer</th>
+
+                    <th>Amount</th>
+
+                    <th>Stage</th>
+
+                    <th>Probability</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="opportunitiesTableBody">
+
+                <tr>
+
+                    <td
+                        colspan="7"
+                        style="text-align:center;"
+                    >
+                        Loading opportunities...
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADD OPPORTUNITY MODAL
+========================================================= -->
+
+<div
+    id="opportunityModal"
+    class="modal"
+    style="display:none;"
+>
+
+    <div class="modal-content">
+
+        <!-- MODAL HEADER -->
+
+        <div class="modal-header">
+
+            <h3>Add Opportunity</h3>
+
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeOpportunityModal()"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             OPPORTUNITY FORM
+        ================================================== -->
+
+        <form id="opportunityForm">
+
+            <!-- Opportunity Name -->
+
+            <div class="form-group">
+
+                <label for="opportunityName">
+                    Opportunity Name
+                </label>
+
+                <input
+                    type="text"
+                    id="opportunityName"
+                    name="name"
+                    placeholder="Enter opportunity name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Customer -->
+
+            <div class="form-group">
+
+                <label for="opportunityCustomer">
+                    Customer
+                </label>
+
+                <select
+                    id="opportunityCustomer"
+                    name="customer_id"
+                    required
+                >
+
+                    <option value="">
+                        Select Customer
+                    </option>
+
+                </select>
+
+                <small>
+                    Select the customer associated with this opportunity.
+                </small>
+
+            </div>
+
+
+            <!-- Amount -->
+
+            <div class="form-group">
+
+                <label for="opportunityAmount">
+                    Amount
+                </label>
+
+                <input
+                    type="number"
+                    id="opportunityAmount"
+                    name="amount"
+                    placeholder="Enter amount"
+                    min="0"
+                    step="0.01"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Stage -->
+
+            <div class="form-group">
+
+                <label for="opportunityStage">
+                    Stage
+                </label>
+
+                <select
+                    id="opportunityStage"
+                    name="stage"
+                    required
+                >
+
+                    <option value="Prospecting">
+                        Prospecting
+                    </option>
+
+                    <option value="Qualification">
+                        Qualification
+                    </option>
+
+                    <option value="Proposal">
+                        Proposal
+                    </option>
+
+                    <option value="Negotiation">
+                        Negotiation
+                    </option>
+
+                    <option value="Closed Won">
+                        Closed Won
+                    </option>
+
+                    <option value="Closed Lost">
+                        Closed Lost
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Probability -->
+
+            <div class="form-group">
+
+                <label for="opportunityProbability">
+                    Probability (%)
+                </label>
+
+                <input
+                    type="number"
+                    id="opportunityProbability"
+                    name="probability"
+                    placeholder="Enter probability"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value="0"
+                    required
+                >
+
+            </div>
+
+
+            <!-- FORM BUTTONS -->
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="closeOpportunityModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Opportunity
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     OPPORTUNITY MODAL FUNCTIONS
+========================================================= -->
+
+<script>
+
+function openOpportunityModal() {
+
+    const modal =
+        document.getElementById("opportunityModal");
+
+    if (modal) {
+        modal.style.display = "flex";
+    }
+
+}
+
+
+function closeOpportunityModal() {
+
+    const modal =
+        document.getElementById("opportunityModal");
+
+    if (modal) {
+
+        modal.style.display = "none";
+
+        const form =
+            document.getElementById("opportunityForm");
+
+        if (form) {
+            form.reset();
+        }
+
+    }
+
+}
+
+
+/*
+    Close modal when clicking outside the modal content
+*/
+
+document.addEventListener("click", function(event) {
+
+    const modal =
+        document.getElementById("opportunityModal");
+
+    if (
+        modal &&
+        event.target === modal
+    ) {
+        closeOpportunityModal();
+    }
+
+});
+
+</script>
+
+
+
+    <!-- =================================================
+         ACTIVITIES
+    ================================================== -->
+
+    <section
+        id="activities"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h1>Activities</h1>
+
+            <button
+                onclick="loadActivities()"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <form
+            id="activityForm"
+            class="crud-form"
+        >
+
+            <input
+                id="activitySubject"
+                placeholder="Subject"
+                required
+            >
+
+            <input
+                id="activityType"
+                placeholder="Type: Call, Meeting, Task, Email"
+                aria-label="Activity type"
+            >
+
+            <input
+                id="activityDate"
+                type="date"
+                aria-label="Due date"
+            >
+
+            <button type="submit">
+                ➕ Add Activity
+            </button>
+
+        </form>
+
+
+        <div
+            id="activitiesContent"
+            class="table-container"
+        >
+            Loading...
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOLLOW UPS
+    ================================================== -->
+
+    <!-- =================================================
+     FOLLOW UPS
+================================================== -->
+
+<section
+    id="followups"
+    class="section"
+>
+
+    <div class="section-header">
+
+        <h1>Follow-Ups</h1>
+
+        <button
+            type="button"
+            onclick="loadFollowups()"
+        >
+            🔄 Refresh
+        </button>
+
+    </div>
+
+    <form
+        id="followupForm"
+        class="crud-form"
+    >
+
+        <input
+            id="followupLeadId"
+            type="number"
+            placeholder="Lead ID"
+            aria-label="Lead ID"
+            required
+        >
+
+        <input
+            id="followupSubject"
+            placeholder="Follow-up plan"
+            aria-label="Follow-up plan"
+            required
+        >
+
+        <input
+            id="followupDate"
+            type="date"
+            aria-label="Next follow-up date"
+            required
+        >
+
+        <input
+            id="followupNotes"
+            placeholder="Additional details (optional)"
+            aria-label="Additional details"
+        >
+
+        <button type="submit">
+            ➕ Add Follow-Up
+        </button>
+
+    </form>
+
+    <div
+        id="followupsContent"
+        class="table-container"
+    >
+        Loading...
+    </div>
+
+</section>
+
+
+
+    <!-- =================================================
+         TICKETS
+    ================================================== -->
+
+    <section id="tickets" class="section">
+
+    <div class="section-header">
+
+        <div>
+            <h1>Tickets</h1>
+            <p>Manage customer support tickets.</p>
+        </div>
+
+        <button
+            type="button"
+            onclick="loadTickets()"
+        >
+            🔄 Refresh
+        </button>
+
+    </div>
+
+
+    <!-- ADD TICKET -->
+
+    <form
+        id="ticketForm"
+        class="crud-form"
+    >
+
+        <input
+            type="text"
+            id="ticketTitle"
+            placeholder="Ticket title"
+            required
+        >
+
+
+        <select
+            id="ticketPriority"
+            required
+        >
+
+            <option value="Low">
+                Low
+            </option>
+
+            <option value="Medium" selected>
+                Medium
+            </option>
+
+            <option value="High">
+                High
+            </option>
+
+            <option value="Critical">
+                Critical
+            </option>
+
+        </select>
+        
+         <input
+            type="text"
+            id="ticketDescription"
+            placeholder="Description"
+        >
+
+
+        <select
+            id="ticketStatus"
+            required
+        >
+            <option value="Open" selected>
+                Open
+            </option>
+
+            <option value="Pending">
+                Pending
+            </option>
+
+            <option value="Resolved">
+                Resolved
+            </option>
+
+            <option value="Closed">
+                Closed
+            </option>
+
+        </select>
+
+
+        
+
+        <button type="submit">
+            ➕ Add Ticket
+        </button>
+
+    </form>
+
+
+    <!-- TICKET TABLE -->
+
+    <div
+        id="ticketsContent"
+        class="table-container"
+    >
+
+        <p>Loading tickets...</p>
+
+    </div>
+
+</section>
+    <!-- =================================================
+         NOTIFICATIONS
+    ================================================== -->
+
+    <section
+        id="notifications"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h1>Notifications</h1>
+
+            <button
+                onclick="loadNotifications()"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <div
+            id="notificationsContent"
+            class="table-container"
+        >
+            Loading...
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         REPORTS
+    ================================================== -->
+
+    <section
+        id="reports"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h1>Reports</h1>
+
+            <button
+                onclick="loadReports()"
+            >
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <div
+            id="reportsContent"
+            class="reports-grid"
+        >
+            Loading...
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================== -->
+
+    <section
+        id="search"
+        class="section"
+    >
+
+        <h1>Global Search</h1>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="globalSearch"
+                placeholder="Search CRM..."
+            >
+
+            <button
+                onclick="performSearch()"
+            >
+                🔎 Search
+            </button>
+
+        </div>
+
+
+        <div
+            id="searchResults"
+            class="table-container"
+        >
+        </div>
+
+    </section>
+
+    <section id="admin" class="section admin-only">
+        <div class="section-header">
+            <div>
+                <h1>Admin Center</h1>
+                <p>Manage access, roles, and account status.</p>
+            </div>
+            <button type="button" onclick="loadAdminData()">🔄 Refresh</button>
+        </div>
+        <form id="userForm" class="crud-form">
+            <input id="userFullName" placeholder="Full name" required>
+            <input id="userEmail" type="email" placeholder="Email" required>
+            <input id="userMobile" placeholder="Mobile number" required>
+            <input id="userPassword" type="password" placeholder="Temporary password" required>
+            <select id="userRole" required><option value="">Select role</option></select>
+            <button type="submit">➕ Add User</button>
+        </form>
+        <div class="admin-grid">
+            <div class="panel"><h2>Team access</h2><div id="usersContent">Loading...</div></div>
+            <div class="panel">
+                <h2>Available roles</h2>
+                <form id="roleForm" class="crud-form">
+                    <input id="roleName" placeholder="New role name" required>
+                    <button type="submit">➕ Add Role</button>
+                </form>
+                <div id="rolesContent">Loading...</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+</div>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<script src="js/api.js"></script>
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

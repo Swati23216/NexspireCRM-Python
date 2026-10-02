@@ -1,0 +1,165 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #131043 0%, #1f388c 55%, #d9f0f2 100%);
+    color: #53243f;
+}
+
+/* LOGIN */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.login-box {
+    width: min(100%, 420px);
+    background: rgb(19, 132, 132);
+    padding: 42px;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(16, 51, 67, 0.28);
+}
+
+.login-box h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #102a43;
+    font-size: 32px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #440e21;
+    margin-bottom: 32px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 15px;
+    border: 1px solid #122aa2;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #243b53;
+}
+
+.form-group input:focus {
+    outline: 3px solid rgba(31, 122, 140, 0.18);
+    border-color: #1f7a8c;
+}
+
+#loginButton {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #5599d7;
+    color: #190a54;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#loginButton:hover {
+    background: #1d0660;
+}
+
+#loginMessage {
+    margin-top: 15px;
+    text-align: center;
+    min-height: 20px;
+}
+
+.auth-toggle {
+    display: block;
+    margin: 18px auto 0;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    color: #102a43;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.auth-note {
+    margin-top: 14px;
+    color: #e5f5f2;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#registerButton {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #5599d7;
+    color: #1d0a54;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#loginForm[hidden],
+#registerForm[hidden] {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .login-container { padding: 16px; }
+    .login-box { padding: 30px 22px; }
+    .login-box h1 { font-size: 28px; }
+}
+
+
+/* =========================================================
+   LEAD ACTION BUTTONS
+========================================================= */
+
+.lead-actions {
+    display: flex !important;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    white-space: nowrap;
+}
+
+
+.lead-actions .action-btn {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+
+.lead-actions .delete-btn {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+.lead-actions button {
+    display: inline-block !important;
+}
+

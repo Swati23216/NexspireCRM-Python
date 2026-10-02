@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Nexspire CRM workspace dashboard">
+	<title>Nexspire CRM | Workspace</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+	<div class="app-shell">
+		<aside class="sidebar" id="sidebar">
+			<div class="brand"><span class="brand-mark">N</span><span>Nexspire <small>CRM</small></span></div>
+			<nav class="primary-nav" aria-label="Main navigation">
+				<a class="nav-link active" href="home.html"><span>⌂</span> Overview</a>
+				<a class="nav-link" href="index.html#leads"><span>◈</span> Leads <b id="navLeadCount">0</b></a>
+				<a class="nav-link" href="index.html#customers"><span>◌</span> Customers</a>
+				<a class="nav-link" href="index.html#opportunities"><span>◇</span> Opportunities</a>
+				<a class="nav-link" href="index.html#activities"><span>◷</span> Activities</a>
+				<a class="nav-link" href="index.html#followups"><span>↗</span> Follow-ups</a>
+				<a class="nav-link" href="index.html#tickets"><span>□</span> Tickets</a>
+				<a class="nav-link" href="index.html#reports"><span>▤</span> Reports</a>
+			</nav>
+			<div class="sidebar-bottom">
+				<a class="nav-link" href="index.html#admin"><span>⚙</span> Settings</a>
+				<button class="logout-link" id="logoutButton" type="button"><span>↪</span> Sign out</button>
+				<div class="sidebar-note"><strong>Workspace health</strong><span><i></i> All systems operational</span></div>
+			</div>
+		</aside>
+		<main class="main-content">
+			<header class="topbar">
+				<button class="icon-button menu-button" id="menuButton" type="button" aria-label="Open navigation">☰</button>
+				<div class="breadcrumb"><span>Workspace</span><strong>/ Overview</strong></div>
+				<div class="topbar-actions">
+					<label class="search-box" for="globalSearch"><span>⌕</span><input id="globalSearch" type="search" placeholder="Search your workspace" autocomplete="off"><kbd>⌘ K</kbd></label>
+					<button class="icon-button notification-button" type="button" aria-label="Notifications">♢<em></em></button>
+					<div class="profile"><span class="avatar" id="userAvatar">NW</span><span><strong id="userName">Workspace user</strong><small id="userRole">Team member</small></span><span class="chevron">⌄</span></div>
+				</div>
+			</header>
+			<div class="content-wrap">
+				<section class="welcome-row"><div><p class="eyebrow">THURSDAY, 03 SEPTEMBER 2026</p><h1>Good morning, <span id="welcomeName">there</span>.</h1><p class="muted">Here is what is happening across your pipeline today.</p></div><div class="quick-actions"><button class="button button-primary" data-target="lead"><span>＋</span> Add lead</button><button class="button button-secondary" data-target="activity"><span>＋</span> Log activity</button></div></section>
+				<div class="alert" id="statusAlert" role="status" hidden></div>
+				<section class="metric-grid" aria-label="Workspace metrics">
+					<article class="metric-card accent-teal"><div class="metric-top"><span class="metric-label">Total leads</span><span class="metric-icon">◈</span></div><strong id="totalLeads">0</strong><span class="metric-foot"><i class="trend-up">↗</i> Active pipeline</span></article>
+					<article class="metric-card accent-coral"><div class="metric-top"><span class="metric-label">Customers</span><span class="metric-icon">◌</span></div><strong id="totalCustomers">0</strong><span class="metric-foot"><i class="trend-up">↗</i> Relationships growing</span></article>
+					<article class="metric-card accent-yellow"><div class="metric-top"><span class="metric-label">Open opportunities</span><span class="metric-icon">◇</span></div><strong id="totalOpportunities">0</strong><span class="metric-foot"><i class="trend-up">↗</i> Worth <span id="pipelineValue">₹0</span></span></article>
+					<article class="metric-card accent-blue"><div class="metric-top"><span class="metric-label">Won revenue</span><span class="metric-icon">↗</span></div><strong id="wonRevenue">₹0</strong><span class="metric-foot"><i class="trend-neutral">•</i> Closed won deals</span></article>
+				</section>
+				<section class="dashboard-columns">
+					<article class="panel pipeline-panel"><div class="panel-heading"><div><p class="eyebrow">PIPELINE HEALTH</p><h2>Lead conversion</h2></div><button class="text-button" data-target="reports">View report <span>→</span></button></div><div class="pipeline-summary"><strong id="conversionRate">0%</strong><span>conversion rate</span></div><div class="bar-chart" id="leadChart" aria-label="Lead status breakdown"></div><div class="legend"><span><i class="dot teal"></i> New</span><span><i class="dot blue"></i> Contacted</span><span><i class="dot yellow"></i> Qualified</span><span><i class="dot coral"></i> Converted</span></div></article>
+					<article class="panel focus-panel"><div class="panel-heading"><div><p class="eyebrow">TODAY'S FOCUS</p><h2>Upcoming follow-ups</h2></div><button class="round-button" data-target="followups" aria-label="View all follow-ups">→</button></div><div class="followup-list" id="followupList"><div class="empty-state">Loading your follow-up queue...</div></div></article>
+				</section>
+				<section class="panel leads-panel"><div class="panel-heading"><div><p class="eyebrow">LATEST ACTIVITY</p><h2>Recent leads</h2></div><button class="text-button" data-target="leads">View all leads <span>→</span></button></div><div class="table-wrap"><table><thead><tr><th>Lead</th><th>Company</th><th>Status</th><th>Source</th><th>Added</th></tr></thead><tbody id="recentLeads"><tr><td colspan="5" class="empty-state">Loading recent leads...</td></tr></tbody></table></div></section>
+				<footer class="footer"><span>Nexspire CRM <b>·</b> Built for teams that move with intention.</span><span id="lastUpdated">Last updated just now</span></footer>
+			</div>
+		</main>
+	</div>
+	<div class="mobile-overlay" id="mobileOverlay"></div>
+	<script src="js/api.js"></script><script src="js/home.js"></script>
+</body>
+</html>
